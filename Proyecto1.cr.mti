@@ -85,6 +85,16 @@ Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 
 -- Compiling entity two_bits_shifter
 -- Compiling architecture Behavioral of two_bits_shifter
 
+} {} {}} {D:/Universidad/AOC-II/proyecto1/Material P1/fuentes mips incompleto/BReg.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:/Universidad/AOC-II/proyecto1/Material P1/fuentes mips incompleto/BReg.vhd}
+Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity BReg
+-- Compiling architecture Behavioral of BReg
+
 } {} {}} {D:/Universidad/AOC-II/proyecto1/Material P1/fuentes mips incompleto/testbench_Mips.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:/Universidad/AOC-II/proyecto1/Material P1/fuentes mips incompleto/testbench_Mips.vhd}
 Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
 -- Loading package STANDARD
@@ -102,15 +112,13 @@ Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 
 -- Compiling entity Ext_signo
 -- Compiling architecture Behavioral of Ext_signo
 
-} {} {}} {D:/Universidad/AOC-II/proyecto1/Material P1/fuentes mips incompleto/BReg.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:/Universidad/AOC-II/proyecto1/Material P1/fuentes mips incompleto/BReg.vhd}
+} {} {}} {D:/Universidad/AOC-II/proyecto1/Material P1/fuentes mips incompleto/Banco_MEM.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:/Universidad/AOC-II/proyecto1/Material P1/fuentes mips incompleto/Banco_MEM.vhd}
 Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
--- Loading package std_logic_arith
--- Loading package STD_LOGIC_UNSIGNED
--- Compiling entity BReg
--- Compiling architecture Behavioral of BReg
+-- Compiling entity Banco_MEM
+-- Compiling architecture Behavioral of Banco_MEM
 
 } {} {}} {D:/Universidad/AOC-II/proyecto1/Material P1/fuentes mips incompleto/UA_incompleta.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:/Universidad/AOC-II/proyecto1/Material P1/fuentes mips incompleto/UA_incompleta.vhd}
 Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
@@ -119,14 +127,6 @@ Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 
 -- Loading package std_logic_1164
 -- Compiling entity UA
 -- Compiling architecture Behavioral of UA
-
-} {} {}} {D:/Universidad/AOC-II/proyecto1/Material P1/fuentes mips incompleto/Banco_MEM.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:/Universidad/AOC-II/proyecto1/Material P1/fuentes mips incompleto/Banco_MEM.vhd}
-Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Compiling entity Banco_MEM
--- Compiling architecture Behavioral of Banco_MEM
 
 } {} {}} {D:/Universidad/AOC-II/proyecto1/Material P1/fuentes mips incompleto/ALU.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:/Universidad/AOC-II/proyecto1/Material P1/fuentes mips incompleto/ALU.vhd}
 Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
@@ -139,14 +139,6 @@ Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 
 -- Compiling entity ALU
 -- Compiling architecture Behavioral of ALU
 
-} {} {}} {D:/Universidad/AOC-II/proyecto1/Material P1/fuentes mips incompleto/reg32.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:/Universidad/AOC-II/proyecto1/Material P1/fuentes mips incompleto/reg32.vhd}
-Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Compiling entity reg32
--- Compiling architecture Behavioral of reg32
-
 } {} {}} {D:/Universidad/AOC-II/proyecto1/Material P1/fuentes mips incompleto/Banco_WB.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:/Universidad/AOC-II/proyecto1/Material P1/fuentes mips incompleto/Banco_WB.vhd}
 Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
 -- Loading package STANDARD
@@ -154,6 +146,14 @@ Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 
 -- Loading package std_logic_1164
 -- Compiling entity Banco_WB
 -- Compiling architecture Behavioral of Banco_WB
+
+} {} {}} {D:/Universidad/AOC-II/proyecto1/Material P1/fuentes mips incompleto/reg32.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:/Universidad/AOC-II/proyecto1/Material P1/fuentes mips incompleto/reg32.vhd}
+Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity reg32
+-- Compiling architecture Behavioral of reg32
 
 } {} {}} {D:/Universidad/AOC-II/proyecto1/Material P1/fuentes mips incompleto/mux2_1.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:/Universidad/AOC-II/proyecto1/Material P1/fuentes mips incompleto/mux2_1.vhd}
 Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
