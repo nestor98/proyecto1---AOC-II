@@ -131,7 +131,8 @@ component UC is
            MemWrite : out  STD_LOGIC;
            MemRead : out  STD_LOGIC;
            MemtoReg : out  STD_LOGIC; 
-           RegWrite : out  STD_LOGIC
+           RegWrite : out  STD_LOGIC;
+		   BNE : out  STD_LOGIC
            );
 end component;
 
@@ -248,7 +249,7 @@ COMPONENT Banco_MEM
         );
     END COMPONENT; 
 
-signal load_PC, RegWrite_ID, RegWrite_EX, RegWrite_MEM, RegWrite_WB, Z, Branch, RegDst_ID, RegDst_EX, ALUSrc_ID, ALUSrc_EX: std_logic;
+signal load_PC, RegWrite_ID, RegWrite_EX, RegWrite_MEM, RegWrite_WB, Z, Branch, BNE, RegDst_ID, RegDst_EX, ALUSrc_ID, ALUSrc_EX: std_logic;
 signal MemtoReg_ID, MemtoReg_EX, MemtoReg_MEM, MemtoReg_WB, MemWrite_ID, MemWrite_EX, MemWrite_MEM, MemRead_ID, MemRead_EX, MemRead_MEM: std_logic;
 signal PC_in, PC_out, four, cero, PC4, DirSalto_ID, IR_in, IR_ID, PC4_ID, inm_ext_EX, Mux_out, IR_bancoID_in : std_logic_vector(31 downto 0);
 signal BusW, BusA, BusB, BusA_EX, BusB_EX, BusB_MEM, inm_ext, inm_ext_x4, ALU_out_EX, ALU_out_MEM, ALU_out_WB, Mem_out, MDR, address_predicted, address_predicted_ID, branch_address_in : std_logic_vector(31 downto 0);
@@ -287,7 +288,10 @@ b_predictor: branch_predictor port map ( 	clk => clk, reset => reset,
 --	PC4_ID: el PC +4 de la instrucción que está en ID
 -- 	DirSalto_ID: la dirección de salto claculada en la etapa ID
 --  Salta sii Branch y Z son 1
-PCSrc <= "11" when Branch='1' and Z='1' else "00";
+
+PCSrc <= "11" when (predictor_error='1' and Saltar='1') else "10" when (predictor_error='1' and Saltar='0') else "01" when (prediction='1') else "00";
+
+--PCSrc <= "11" when (Branch='1' and Z='1' and BNE='0') or (Branch='1' and Z='0' and BNE='1')  else "00";
 
 muxPC: mux4_1 port map (Din0 => PC4, DIn1 => address_predicted, Din2 => PC4_ID, DIn3 => DirSalto_ID, ctrl => PCSrc, Dout => PC_in);
 -----------------------------------
@@ -339,7 +343,7 @@ Op_code_ID <= IR_ID(31 downto 26) when avanzar_ID='1' else "000000";
 
 
 UC_seg: UC port map (IR_op_code => Op_code_ID, Branch => Branch, RegDst => RegDst_ID,  ALUSrc => ALUSrc_ID, MemWrite => MemWrite_ID,  
-							MemRead => MemRead_ID, MemtoReg => MemtoReg_ID, RegWrite => RegWrite_ID);
+							MemRead => MemRead_ID, MemtoReg => MemtoReg_ID, RegWrite => RegWrite_ID, BNE => BNE);
 ------------------------------------
 -- Prediccion de saltos: Comprobar si había que saltar
 -- Ahora mismo sólo esta implementada la instrucción de salto BEQ. Si es una instrucción de salto y se activa la señal Z se debe saltar
@@ -348,13 +352,13 @@ Saltar <= (Branch AND Z AND NOT BNE) OR (Branch AND NOT Z AND BNE);
 ------------------------------------
 -- Prediccion de saltos: Comprobación de la predicción realizada:
 -- las señales están a cero. Tenéis que diseñar vosotros la lógica necesaria para cada caso
-address_error <= '0';
-decission_error <= '0';
+address_error <= '0' when (DirSalto_ID=address_predicted_ID) else '1';
+decission_error <= '0' when (Saltar=prediction_ID) else '1';
 -- Ha habido un error si el predictor tomó la decisión contraria (decission error) o si se decidió saltar pero se saltó a una dirección incorrecta
-predictor_error <= '0';
+predictor_error <= decission_error or address_error;
 -- Actualización del predictor: si la predicción fue errónea damos la orden de que se carguen los datos correctos
-update_predictor <= '0';
-prediction_in <= '0';
+update_predictor <= predictor_error;
+prediction_in <= Saltar;
 branch_address_in <= DirSalto_ID;
 -------------------------------------------------------------------------				
 -- si la operación es aritmética (es decir: IR_ID(31 downto 26)= "000001") miro el campo funct
