@@ -288,7 +288,7 @@ b_predictor: branch_predictor port map ( 	clk => clk, reset => reset,
 --	PC4_ID: el PC +4 de la instrucción que está en ID
 -- 	DirSalto_ID: la dirección de salto claculada en la etapa ID
 --  Salta sii Branch y Z son 1
-PCSrc <= "11" when (Branch='1' and Z='1' and BNE='0') or (Branch='1' and Z='0' and BNE='1') else "00";
+PCSrc <= "11" when (Branch='1' and Z='1' and BNE='0') or (Branch='1' and Z='0' and BNE='1') else "00" or ;
 
 muxPC: mux4_1 port map (Din0 => PC4, DIn1 => address_predicted, Din2 => PC4_ID, DIn3 => DirSalto_ID, ctrl => PCSrc, Dout => PC_in);
 -----------------------------------
