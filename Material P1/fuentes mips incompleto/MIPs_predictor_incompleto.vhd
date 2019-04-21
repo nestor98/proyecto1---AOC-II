@@ -352,7 +352,7 @@ Saltar <= (Branch AND Z AND NOT BNE) OR (Branch AND NOT Z AND BNE);
 ------------------------------------
 -- Prediccion de saltos: Comprobación de la predicción realizada:
 -- las señales están a cero. Tenéis que diseñar vosotros la lógica necesaria para cada caso
-address_error <= '0' when (address_predicted_ID=DirSalto_ID) else '1';
+address_error <= '0' when (prediction_ID='0') or (address_predicted_ID=DirSalto_ID) else '1';
 decission_error <= '0' when (Saltar=prediction_ID) else '1';
 -- Ha habido un error si el predictor tomó la decisión contraria (decission error) o si se decidió saltar pero se saltó a una dirección incorrecta
 predictor_error <= (decission_error or address_error) and Branch;
