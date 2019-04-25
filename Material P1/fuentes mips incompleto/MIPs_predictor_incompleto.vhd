@@ -284,7 +284,7 @@ b_predictor: branch_predictor port map ( 	clk => clk, reset => reset,
 -- Prediccion de saltos: MUX para elegir la próxima instrucción
 -- A este Mux le llegan 4 opciones: 
 -- 	PC4: PC actual +4
--- 	@address_predicted: la dirección de saltoque proporciona el predictor
+-- 	@address_predicted: la dirección de salto que proporciona el predictor
 --	PC4_ID: el PC +4 de la instrucción que está en ID
 -- 	DirSalto_ID: la dirección de salto claculada en la etapa ID
 --  Salta sii Branch y Z son 1
@@ -323,8 +323,8 @@ Z <= '1' when (busA=busB) else '0';
 ------------------------------------
 -- Riesgos de datos: os damos las señales definidas, pero están todas a cero, debéis incluir el código identifica cada riesgo
 -- Detectar lw/uso: 
-riesgo_rs_lw_uso <= '0';
-riesgo_rt_lw_uso <= '0'; 
+riesgo_rs_lw_uso <= '1'; -- when (Reg_Rs_ID = RW_EX y la de EX es lw) else '0';
+riesgo_rt_lw_uso <= '0'; -- lo mismo pero con Rt
 
 riesgo_lw_uso <= riesgo_rs_lw_uso or riesgo_rt_lw_uso;
 
@@ -384,6 +384,12 @@ Banco_ID_EX: Banco_EX PORT MAP ( clk => clk, reset => reset, load => '1', busA =
 
 Unidad_Ant: UA port map (	Reg_Rs_EX => Reg_Rs_EX, Reg_Rt_EX => Reg_Rt_EX, RegWrite_MEM => RegWrite_MEM, RW_MEM => RW_MEM,
 							RegWrite_WB => RegWrite_WB, RW_WB => RW_WB, MUX_ctrl_A => MUX_ctrl_A, MUX_ctrl_B => MUX_ctrl_B);
+							
+---------------------------------------------------------------------------------
+-- Nuevo: parte 3. Logica para elegir entrada con anticipacion:
+MUX_ctrl_A <= "01" when (Reg_Rs_EX = RW_MEM and RegWrite_MEM = '1') else "10" when (Reg_Rs_EX = RW_WB and RegWrite_WB = '1') else "00";
+MUX_ctrl_B <= "01" when (Reg_Rt_EX = RW_MEM and RegWrite_MEM = '1') else "10" when (Reg_Rt_EX = RW_WB and RegWrite_WB = '1') else "00";
+--                       dato de etapa MEM de la ins anterior						dato de WB de dos ins antes			    por defecto, salidas del BR
 ---------------------------------------------------------------------------------
 -- Unidad de anticipacion: Muxes para la anticipacion
 Mux_A: mux4_1_32bits port map  ( DIn0 => BusA_EX, DIn1 => ALU_out_MEM, DIn2 => busW, DIn3 => cero, ctrl => MUX_ctrl_A, Dout => Mux_A_out);
