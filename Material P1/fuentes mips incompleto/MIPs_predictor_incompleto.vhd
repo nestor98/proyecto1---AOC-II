@@ -339,9 +339,9 @@ riesgo_lw_uso <= riesgo_rs_lw_uso or riesgo_rt_lw_uso;
 -- Detectar riesgos en los beq: 
 -- rs: distancia 1 (la ins anterior tiene el dato en la etapa E)
 -- supondre que solo las instrucciones Branch tienen 1 en el 3er bit de mas peso de su codigo de op
-riesgo_beq_rs_d1 <= '1' when (IR_ID(28) = '1' and IR_ID(25 downto 21) = RW_EX and RegWrite_EX = '1') else '0'; 
+riesgo_beq_rs_d1 <= '1' when (IR_ID(28) = '1' and IR_ID(25 downto 21) = RW_EX and RegWrite_EX = '1') or (IR_ID(28) = '1' and IR_ID(25 downto 21) = RW_MEM and MemtoReg_MEM = '1') else '0'; 
 riesgo_beq_rs_d2 <= '1' when (IR_ID(28) = '1' and IR_ID(25 downto 21) = RW_EX and MemtoReg_EX = '1') else '0'; 
-riesgo_beq_rt_d1 <= '1' when (IR_ID(28) = '1' and IR_ID(20 downto 16) = RW_EX and RegWrite_EX = '1') else '0'; 
+riesgo_beq_rt_d1 <= '1' when (IR_ID(28) = '1' and IR_ID(20 downto 16) = RW_EX and RegWrite_EX = '1') or (IR_ID(28) = '1' and IR_ID(25 downto 21) = RW_MEM and MemtoReg_MEM = '1') else '0'; 
 riesgo_beq_rt_d2 <= '1' when (IR_ID(28) = '1' and IR_ID(20 downto 16) = RW_EX and MemtoReg_EX = '1') else '0'; 
 
 riesgo_beq <= riesgo_beq_rs_d1 or riesgo_beq_rs_d2 or riesgo_beq_rt_d1 or riesgo_beq_rt_d2;
