@@ -40,11 +40,11 @@ end memoriaRAM_I_anti;
  
  
 -- Programa de prueba_anti: 
-
+ 
  
 architecture Behavioral of memoriaRAM_I_anti is
 type RamType is array(0 to 127) of std_logic_vector(31 downto 0);
-signal RAM : RamType := (  			X"08200004", X"1002fffe", X"20010000", X"1421fff0", X"04000800", X"04000800", X"04000800", X"00000000", -- posiciones 0,1,2,3,4,5,6,7
+signal RAM : RamType := (  			X"08200004", X"20010000", X"04000800", X"04200800", X"04200800", X"04200800", X"0c010000", X"00000000", -- posiciones 0,1,2,3,4,5,6,7
 									X"00000000", X"00000000", X"00000000", X"00000000", X"00000000", X"00000000", X"00000000", X"00000000", --posicones 8,9,...
 									X"00000000", X"00000000", X"00000000", X"00000000", X"00000000", X"00000000", X"00000000", X"00000000",
 									X"00000000", X"00000000", X"00000000", X"00000000", X"00000000", X"00000000", X"00000000", X"00000000",

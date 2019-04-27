@@ -338,10 +338,11 @@ riesgo_lw_uso <= riesgo_rs_lw_uso or riesgo_rt_lw_uso;
 
 -- Detectar riesgos en los beq: 
 -- rs: distancia 1 (la ins anterior tiene el dato en la etapa E)
-riesgo_beq_rs_d1 <= '1' when (Branch = '1' and IR_ID(25 downto 21) = RW_EX and RegWrite_EX = '1') else '0'; 
-riesgo_beq_rs_d2 <= '1' when (Branch = '1' and IR_ID(25 downto 21) = RW_EX and MemtoReg_EX = '1') else '0'; 
-riesgo_beq_rt_d1 <= '1' when (Branch = '1' and IR_ID(20 downto 16) = RW_EX and RegWrite_EX = '1') else '0'; 
-riesgo_beq_rt_d2 <= '1' when (Branch = '1' and IR_ID(20 downto 16) = RW_EX and MemtoReg_EX = '1') else '0'; 
+-- supondre que solo las instrucciones Branch tienen 1 en el 3er bit de mas peso de su codigo de op
+riesgo_beq_rs_d1 <= '1' when (IR_ID(28) = '1' and IR_ID(25 downto 21) = RW_EX and RegWrite_EX = '1') else '0'; 
+riesgo_beq_rs_d2 <= '1' when (IR_ID(28) = '1' and IR_ID(25 downto 21) = RW_EX and MemtoReg_EX = '1') else '0'; 
+riesgo_beq_rt_d1 <= '1' when (IR_ID(28) = '1' and IR_ID(20 downto 16) = RW_EX and RegWrite_EX = '1') else '0'; 
+riesgo_beq_rt_d2 <= '1' when (IR_ID(28) = '1' and IR_ID(20 downto 16) = RW_EX and MemtoReg_EX = '1') else '0'; 
 
 riesgo_beq <= riesgo_beq_rs_d1 or riesgo_beq_rs_d2 or riesgo_beq_rt_d1 or riesgo_beq_rt_d2;
 -- en funci�n de los riesgos se para o se permite continuar a la instrucci�n en ID
@@ -352,7 +353,7 @@ Op_code_ID <= IR_ID(31 downto 26) when avanzar_ID='1' else "000000";
 
 
 UC_seg: UC port map (IR_op_code => Op_code_ID, Branch => Branch, RegDst => RegDst_ID,  ALUSrc => ALUSrc_ID, MemWrite => MemWrite_ID,  
-							MemRead => MemRead_ID, MemtoReg => MemtoReg_ID, RegWrite => RegWrite_ID, BNE => BNE, RegRead => RegRead);
+							MemRead => MemRead_ID, MemtoReg => MemtoReg_ID, RegWrite => RegWrite_ID, BNE => BNE);
 ------------------------------------
 -- Prediccion de saltos: Comprobar si hab�a que saltar
 -- Ahora mismo s�lo esta implementada la instrucci�n de salto BEQ. Si es una instrucci�n de salto y se activa la se�al Z se debe saltar
