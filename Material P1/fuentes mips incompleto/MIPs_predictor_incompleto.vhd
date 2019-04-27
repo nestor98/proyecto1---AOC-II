@@ -75,7 +75,7 @@ component memoriaRAM_D is port (
 		Dout : out std_logic_vector (31 downto 0));
 end component;
 
-component memoriaRAM_I_saltos is port (
+component memoriaRAM_I is port (
 		CLK : in std_logic;
 		ADDR : in std_logic_vector (31 downto 0); --Dir 
         Din : in std_logic_vector (31 downto 0);--entrada de datos para el puerto de escritura
@@ -132,7 +132,6 @@ component UC is
            MemRead : out  STD_LOGIC;
            MemtoReg : out  STD_LOGIC; 
            RegWrite : out  STD_LOGIC;
-		   RegRead : out STD_LOGIC;
 		   BNE : out  STD_LOGIC
            );
 end component;
@@ -296,7 +295,7 @@ PCSrc <= "11" when (predictor_error='1' and Saltar='1') else "10" when (predicto
 
 muxPC: mux4_1 port map (Din0 => PC4, DIn1 => address_predicted, Din2 => PC4_ID, DIn3 => DirSalto_ID, ctrl => PCSrc, Dout => PC_in);
 -----------------------------------
-Mem_I: memoriaRAM_I_saltos PORT MAP (CLK => CLK, ADDR => PC_out, Din => cero, WE => '0', RE => '1', Dout => IR_in);
+Mem_I: memoriaRAM_I PORT MAP (CLK => CLK, ADDR => PC_out, Din => cero, WE => '0', RE => '1', Dout => IR_in);
 --------------------------------------------------------------
 -- Prediccion de saltos: Anulación de la instrucción. Si en ID se detecta un error la instrucción que se acaba de leer se anula. Para ello se sustituye su código por el de una nop
 -- La siguiente línea es un mux descrito de forma funcional
@@ -330,7 +329,7 @@ Z <= '1' when (busA=busB) else '0';
 -- load_dato <= '1' when  -- op anterior (en EX) es lw o la     	   ->  MemtoReg_EX se supone que cumple esta funcion
 
 -- necesita_dato <= -- la op en ID puede requerir el dato de un load   ->  al final he añadido la señal Reg_Read a la UC
-
+RegRead <= '1' when ( IR_ID(31 downto 26)= "000001" or IR_ID(31 downto 26)= "000010" or IR_ID(31 downto 26)= "000011" or IR_ID(31 downto 26)= "000100" or IR_ID(31 downto 26)= "000101" or IR_ID(31 downto 26)= "001000") else '0';
 -- IR_ID(25 downto 21) es Rs en ID; IR_ID(20 downto 16) es Rt
 riesgo_rs_lw_uso <= '1' when (RegRead = '1' and IR_ID(25 downto 21) = RW_EX and MemtoReg_EX = '1') else '0';
 riesgo_rt_lw_uso <= '1' when (RegRead = '1' and IR_ID(20 downto 16) = RW_EX and MemtoReg_EX = '1') else '0';
