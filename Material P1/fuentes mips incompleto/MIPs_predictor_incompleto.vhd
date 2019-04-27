@@ -132,6 +132,7 @@ component UC is
            MemRead : out  STD_LOGIC;
            MemtoReg : out  STD_LOGIC; 
            RegWrite : out  STD_LOGIC;
+		   RegRead : out STD_LOGIC;
 		   BNE : out  STD_LOGIC
            );
 end component;
@@ -249,12 +250,12 @@ COMPONENT Banco_MEM
         );
     END COMPONENT; 
 
-signal load_PC, RegWrite_ID, RegWrite_EX, RegWrite_MEM, RegWrite_WB, Z, Branch, BNE, RegDst_ID, RegDst_EX, ALUSrc_ID, ALUSrc_EX: std_logic;
+signal load_PC, RegWrite_ID, RegWrite_EX, RegWrite_MEM, RegWrite_WB, Z, Branch, BNE, RegRead, RegDst_ID, RegDst_EX, ALUSrc_ID, ALUSrc_EX: std_logic;
 signal MemtoReg_ID, MemtoReg_EX, MemtoReg_MEM, MemtoReg_WB, MemWrite_ID, MemWrite_EX, MemWrite_MEM, MemRead_ID, MemRead_EX, MemRead_MEM: std_logic;
 signal PC_in, PC_out, four, cero, PC4, DirSalto_ID, IR_in, IR_ID, PC4_ID, inm_ext_EX, Mux_out, IR_bancoID_in : std_logic_vector(31 downto 0);
 signal BusW, BusA, BusB, BusA_EX, BusB_EX, BusB_MEM, inm_ext, inm_ext_x4, ALU_out_EX, ALU_out_MEM, ALU_out_WB, Mem_out, MDR, address_predicted, address_predicted_ID, branch_address_in : std_logic_vector(31 downto 0);
 signal prediction, prediction_in, update_predictor, prediction_ID, predictor_error, address_error, decission_error, saltar : std_logic;
-signal riesgo_beq, riesgo_beq_rt_d2, riesgo_beq_rt_d1, riesgo_beq_rs_d2, riesgo_beq_rs_d1, riesgo_lw_uso, riesgo_rt_lw_uso, riesgo_rs_lw_uso, avanzar_ID: std_logic;
+signal riesgo_beq, riesgo_beq_rt_d2, riesgo_beq_rt_d1, riesgo_beq_rs_d2, riesgo_beq_rs_d1, riesgo_lw_uso, riesgo_rt_lw_uso, riesgo_rs_lw_uso, necesita_dato, load_dato, avanzar_ID: std_logic;
 signal RW_EX, RW_MEM, RW_WB, Reg_Rd_EX, Reg_Rt_EX, Reg_Rs_EX: std_logic_vector(4 downto 0);
 signal ALUctrl_ID, ALUctrl_EX : std_logic_vector(2 downto 0);
 signal Op_code_ID: std_logic_vector(5 downto 0);
@@ -322,21 +323,30 @@ Z <= '1' when (busA=busB) else '0';
 
 ------------------------------------
 -- Riesgos de datos: os damos las señales definidas, pero están todas a cero, debéis incluir el código identifica cada riesgo
+-- Codigo: 000000  000001  000010  000011  000100  000101  001000
+-- Oper:    nop     add      lw      sw     beq     bne	    la 
 -- Detectar lw/uso: 
-riesgo_rs_lw_uso <= '1'; -- when (Reg_Rs_ID = RW_EX y la de EX es lw) else '0';
-riesgo_rt_lw_uso <= '0'; -- lo mismo pero con Rt
+
+-- load_dato <= '1' when  -- op anterior (en EX) es lw o la     	   ->  MemtoReg_EX se supone que cumple esta funcion
+
+-- necesita_dato <= -- la op en ID puede requerir el dato de un load   ->  al final he añadido la señal Reg_Read a la UC
+
+-- IR_ID(25 downto 21) es Rs en ID; IR_ID(20 downto 16) es Rt
+riesgo_rs_lw_uso <= '1' when (RegRead = '1' and IR_ID(25 downto 21) = RW_EX and MemtoReg_EX = '1') else '0';
+riesgo_rt_lw_uso <= '1' when (RegRead = '1' and IR_ID(20 downto 16) = RW_EX and MemtoReg_EX = '1') else '0';
 
 riesgo_lw_uso <= riesgo_rs_lw_uso or riesgo_rt_lw_uso;
 
 -- Detectar riesgos en los beq: 
-riesgo_beq_rs_d1 <= '0';
-riesgo_beq_rs_d2 <= '0';
-riesgo_beq_rt_d1 <= '0';
-riesgo_beq_rt_d2 <= '0';
+-- rs: distancia 1 (la ins anterior tiene el dato en la etapa E)
+riesgo_beq_rs_d1 <= '1' when (Branch = '1' and IR_ID(25 downto 21) = RW_EX and RegWrite_EX = '1') else '0'; 
+riesgo_beq_rs_d2 <= '1' when (Branch = '1' and IR_ID(25 downto 21) = RW_EX and MemtoReg_EX = '1') else '0'; 
+riesgo_beq_rt_d1 <= '1' when (Branch = '1' and IR_ID(20 downto 16) = RW_EX and RegWrite_EX = '1') else '0'; 
+riesgo_beq_rt_d2 <= '1' when (Branch = '1' and IR_ID(20 downto 16) = RW_EX and MemtoReg_EX = '1') else '0'; 
 
 riesgo_beq <= riesgo_beq_rs_d1 or riesgo_beq_rs_d2 or riesgo_beq_rt_d1 or riesgo_beq_rt_d2;
 -- en función de los riesgos se para o se permite continuar a la instrucción en ID
-avanzar_ID <= '1';
+avanzar_ID <= '0' when (riesgo_lw_uso = '1' or riesgo_beq = '1') else '1';
 -- Envío de instrucción a EX. Adoptamos una solución sencilla, si hay que parar pasamos hacia adelante las señales de control de una nop
 Op_code_ID <= IR_ID(31 downto 26) when avanzar_ID='1' else "000000";
 ------------------------------------------------------------
@@ -385,11 +395,6 @@ Banco_ID_EX: Banco_EX PORT MAP ( clk => clk, reset => reset, load => '1', busA =
 Unidad_Ant: UA port map (	Reg_Rs_EX => Reg_Rs_EX, Reg_Rt_EX => Reg_Rt_EX, RegWrite_MEM => RegWrite_MEM, RW_MEM => RW_MEM,
 							RegWrite_WB => RegWrite_WB, RW_WB => RW_WB, MUX_ctrl_A => MUX_ctrl_A, MUX_ctrl_B => MUX_ctrl_B);
 							
----------------------------------------------------------------------------------
--- Nuevo: parte 3. Logica para elegir entrada con anticipacion:
-MUX_ctrl_A <= "01" when (Reg_Rs_EX = RW_MEM and RegWrite_MEM = '1') else "10" when (Reg_Rs_EX = RW_WB and RegWrite_WB = '1') else "00";
-MUX_ctrl_B <= "01" when (Reg_Rt_EX = RW_MEM and RegWrite_MEM = '1') else "10" when (Reg_Rt_EX = RW_WB and RegWrite_WB = '1') else "00";
---                       dato de etapa MEM de la ins anterior						dato de WB de dos ins antes			    por defecto, salidas del BR
 ---------------------------------------------------------------------------------
 -- Unidad de anticipacion: Muxes para la anticipacion
 Mux_A: mux4_1_32bits port map  ( DIn0 => BusA_EX, DIn1 => ALU_out_MEM, DIn2 => busW, DIn3 => cero, ctrl => MUX_ctrl_A, Dout => Mux_A_out);

@@ -37,14 +37,16 @@ entity UC is
 			  -- Fin Nueva señal
            RegDst : out  STD_LOGIC;
            ALUSrc : out  STD_LOGIC;
-			  -- Nueva señal la
+			  -- Nueva señal
 		   FP_add	: out  STD_LOGIC; -- indica que es una suma en FP
 			  -- Fin Nueva señal
            MemWrite : out  STD_LOGIC;
            MemRead : out  STD_LOGIC;
            MemtoReg : out  STD_LOGIC;
            RegWrite : out  STD_LOGIC;
-           Update_Rs: out  STD_LOGIC);
+           Update_Rs: out  STD_LOGIC;
+			 --Nueva señal:
+		   RegRead : out STD_LOGIC); -- añadida para detencion, 1 sii lee de BR
 end UC;
 
 architecture Behavioral of UC is
@@ -55,14 +57,14 @@ begin
 UC_mux : process (IR_op_code)
 begin 
 	CASE IR_op_code IS
-		 WHEN  "000000"  =>  Branch <= '0'; RegDst <= '0'; ALUSrc <= '0'; MemWrite <= '0'; MemRead <= '0'; MemtoReg <= '0'; RegWrite <= '0'; Update_Rs <= '0'; BNE <= '0'; FP_add <= '0';
-		 WHEN  "000001"  =>  Branch <= '0'; RegDst <= '1'; ALUSrc <= '0'; MemWrite <= '0'; MemRead <= '0'; MemtoReg <= '0'; RegWrite <= '1'; Update_Rs <= '0'; BNE <= '0'; FP_add <= '0';
-		 WHEN  "000010"  =>  Branch <= '0'; RegDst <= '0'; ALUSrc <= '1'; MemWrite <= '0'; MemRead <= '1'; MemtoReg <= '1'; RegWrite <= '1'; Update_Rs <= '0'; BNE <= '0'; FP_add <= '0';
-		 WHEN  "000011"  =>  Branch <= '0'; RegDst <= '0'; ALUSrc <= '1'; MemWrite <= '1'; MemRead <= '0'; MemtoReg <= '0'; RegWrite <= '0'; Update_Rs <= '0'; BNE <= '0'; FP_add <= '0';
-		 WHEN  "000100"  =>  Branch <= '1'; RegDst <= '0'; ALUSrc <= '0'; MemWrite <= '0'; MemRead <= '0'; MemtoReg <= '0'; RegWrite <= '0'; Update_Rs <= '0'; BNE <= '0'; FP_add <= '0';
-		 WHEN  "000101"  =>  Branch <= '1'; RegDst <= '0'; ALUSrc <= '0'; MemWrite <= '0'; MemRead <= '0'; MemtoReg <= '0'; RegWrite <= '0'; Update_Rs <= '0'; BNE <= '1'; FP_add <= '0'; --bne
-		 WHEN  "001000"  =>  Branch <= '0'; RegDst <= '0'; ALUSrc <= '1'; MemWrite <= '0'; MemRead <= '0'; MemtoReg <= '0'; RegWrite <= '1'; Update_Rs <= '0'; BNE <= '0'; FP_add <= '0'; -- la
-		 WHEN  OTHERS 	  => Branch <= '0'; RegDst <= '0'; ALUSrc <= '0'; MemWrite <= '0'; MemRead <= '0'; MemtoReg <= '0'; RegWrite <= '0'; Update_Rs <= '0'; BNE <= '0'; FP_add <= '0';
+		 WHEN  "000000"  =>  Branch <= '0'; RegDst <= '0'; ALUSrc <= '0'; MemWrite <= '0'; MemRead <= '0'; MemtoReg <= '0'; RegWrite <= '0'; Update_Rs <= '0'; BNE <= '0'; FP_add <= '0'; RegRead <= '0'; 
+		 WHEN  "000001"  =>  Branch <= '0'; RegDst <= '1'; ALUSrc <= '0'; MemWrite <= '0'; MemRead <= '0'; MemtoReg <= '0'; RegWrite <= '1'; Update_Rs <= '0'; BNE <= '0'; FP_add <= '0'; RegRead <= '1';
+		 WHEN  "000010"  =>  Branch <= '0'; RegDst <= '0'; ALUSrc <= '1'; MemWrite <= '0'; MemRead <= '1'; MemtoReg <= '1'; RegWrite <= '1'; Update_Rs <= '0'; BNE <= '0'; FP_add <= '0'; RegRead <= '1';
+		 WHEN  "000011"  =>  Branch <= '0'; RegDst <= '0'; ALUSrc <= '1'; MemWrite <= '1'; MemRead <= '0'; MemtoReg <= '0'; RegWrite <= '0'; Update_Rs <= '0'; BNE <= '0'; FP_add <= '0'; RegRead <= '1';
+		 WHEN  "000100"  =>  Branch <= '1'; RegDst <= '0'; ALUSrc <= '0'; MemWrite <= '0'; MemRead <= '0'; MemtoReg <= '0'; RegWrite <= '0'; Update_Rs <= '0'; BNE <= '0'; FP_add <= '0'; RegRead <= '1';
+		 WHEN  "000101"  =>  Branch <= '1'; RegDst <= '0'; ALUSrc <= '0'; MemWrite <= '0'; MemRead <= '0'; MemtoReg <= '0'; RegWrite <= '0'; Update_Rs <= '0'; BNE <= '1'; FP_add <= '0'; RegRead <= '1'; --bne
+		 WHEN  "001000"  =>  Branch <= '0'; RegDst <= '0'; ALUSrc <= '1'; MemWrite <= '0'; MemRead <= '0'; MemtoReg <= '0'; RegWrite <= '1'; Update_Rs <= '0'; BNE <= '0'; FP_add <= '0'; RegRead <= '1'; -- la
+		 WHEN  OTHERS 	  => Branch <= '0'; RegDst <= '0'; ALUSrc <= '0'; MemWrite <= '0'; MemRead <= '0'; MemtoReg <= '0'; RegWrite <= '0'; Update_Rs <= '0'; BNE <= '0'; FP_add <= '0'; RegRead <= '0';
 	  END CASE;
 end process;
 end Behavioral;

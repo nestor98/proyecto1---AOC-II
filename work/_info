@@ -24,9 +24,9 @@ Vez3M66R73icgd5;^1]n[o0
 !s100 FdnT[E<XL_UiCO?C2]0L[0
 Z9 OP;C;10.4a;61
 32
-Z10 !s110 1555704738
+Z10 !s110 1556292529
 !i10b 1
-Z11 !s108 1555704737.000000
+Z11 !s108 1556292529.000000
 Z12 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/adder32.vhd|
 Z13 !s107 D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/adder32.vhd|
 !i113 1
@@ -69,9 +69,9 @@ V@RAaWJGEJU]dl42V5llc>2
 !s100 E`1`MV@OJiDZHNeDL6[b81
 R9
 32
-Z19 !s110 1555704739
+Z19 !s110 1556292530
 !i10b 1
-Z20 !s108 1555704738.000000
+Z20 !s108 1556292530.000000
 Z21 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/ALU.vhd|
 Z22 !s107 D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/ALU.vhd|
 !i113 1
@@ -113,9 +113,9 @@ R9
 32
 R19
 !i10b 1
-Z26 !s108 1555704739.000000
-Z27 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/Banco_EX.vhd|
-Z28 !s107 D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/Banco_EX.vhd|
+R20
+Z26 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/Banco_EX.vhd|
+Z27 !s107 D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/Banco_EX.vhd|
 !i113 1
 R14
 R15
@@ -131,19 +131,19 @@ R9
 32
 R19
 !i10b 1
+R20
 R26
 R27
-R28
 !i113 1
 R14
 R15
 Ebanco_id
-Z29 w1457861618
+Z28 w1457861618
 R4
 R5
 R6
-Z30 8D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/Banco_ID_predictor.vhd
-Z31 FD:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/Banco_ID_predictor.vhd
+Z29 8D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/Banco_ID_predictor.vhd
+Z30 FD:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/Banco_ID_predictor.vhd
 l0
 L8
 V[>N]9IWKER0Y`nd?Po9GG2
@@ -152,9 +152,9 @@ R9
 32
 R19
 !i10b 1
-R26
-Z32 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/Banco_ID_predictor.vhd|
-Z33 !s107 D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/Banco_ID_predictor.vhd|
+R20
+Z31 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/Banco_ID_predictor.vhd|
+Z32 !s107 D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/Banco_ID_predictor.vhd|
 !i113 1
 R14
 R15
@@ -170,28 +170,28 @@ R9
 32
 R19
 !i10b 1
-R26
+R20
+R31
 R32
-R33
 !i113 1
 R14
 R15
 Ebanco_mem
-Z34 w1397310004
+Z33 w1397310004
 R4
 R5
 R6
-Z35 8D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/Banco_MEM.vhd
-Z36 FD:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/Banco_MEM.vhd
+Z34 8D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/Banco_MEM.vhd
+Z35 FD:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/Banco_MEM.vhd
 l0
 L32
 Ve_BCiA06hX`X=P]Tane_g1
 !s100 ?USSIc9eczC<TE>;kaObE1
 R9
 32
-Z37 !s110 1555704740
+Z36 !s110 1556292531
 !i10b 1
-R26
+Z37 !s108 1556292531.000000
 Z38 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/Banco_MEM.vhd|
 Z39 !s107 D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/Banco_MEM.vhd|
 !i113 1
@@ -207,16 +207,16 @@ V@14DKN4R5m`n^;_f_[EgC1
 !s100 L3PLMMzSnSf5lMERo4k?l3
 R9
 32
-R37
+R36
 !i10b 1
-R26
+R37
 R38
 R39
 !i113 1
 R14
 R15
 Ebanco_wb
-R34
+R33
 R4
 R5
 R6
@@ -228,11 +228,11 @@ V6eXcQE7zz02BL3aGi[<F>3
 !s100 Dj=ZgPh1G[ne]R]6kzWRW1
 R9
 32
-R37
+R36
 !i10b 1
-Z42 !s108 1555704740.000000
-Z43 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/Banco_WB.vhd|
-Z44 !s107 D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/Banco_WB.vhd|
+R37
+Z42 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/Banco_WB.vhd|
+Z43 !s107 D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/Banco_WB.vhd|
 !i113 1
 R14
 R15
@@ -246,32 +246,32 @@ VjKQ4_CS6D4@Z@GMkAePmJ3
 !s100 ?^XIZeBV;I]WDim1HT2QW1
 R9
 32
-R37
+R36
 !i10b 1
+R37
 R42
 R43
-R44
 !i113 1
 R14
 R15
 Ebranch_predictor
-Z45 w1553861197
+Z44 w1553861197
 R4
 R5
 R6
-Z46 8D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/predictor_saltos.vhd
-Z47 FD:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/predictor_saltos.vhd
+Z45 8D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/predictor_saltos.vhd
+Z46 FD:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/predictor_saltos.vhd
 l0
 L8
 VOElW@3UDRTzQ3faF8NFSj2
 !s100 5LMm;[]Ri7L4UBW>F5??o0
 R9
 32
-Z48 !s110 1555704743
+Z47 !s110 1556292535
 !i10b 1
-Z49 !s108 1555704743.000000
-Z50 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/predictor_saltos.vhd|
-Z51 !s107 D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/predictor_saltos.vhd|
+Z48 !s108 1556292534.000000
+Z49 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/predictor_saltos.vhd|
+Z50 !s107 D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/predictor_saltos.vhd|
 !i113 1
 R14
 R15
@@ -285,34 +285,34 @@ VZ@Xh5J3j1z:_o3PifccXF0
 !s100 23hDQl_5PgCf^HcRea2kF1
 R9
 32
-R48
+R47
 !i10b 1
+R48
 R49
 R50
-R51
 !i113 1
 R14
 R15
 Ebreg
-Z52 w1521060254
+Z51 w1521060254
 R3
 R2
 R4
 R5
 R6
-Z53 8D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/BReg.vhd
-Z54 FD:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/BReg.vhd
+Z52 8D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/BReg.vhd
+Z53 FD:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/BReg.vhd
 l0
 L36
 VVn_dFT2n6?o7C]gJBmjFh1
 !s100 _JHQejW;DO9M]5ihRHD:S1
 R9
 32
-R37
+Z54 !s110 1556292532
 !i10b 1
-R42
-Z55 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/BReg.vhd|
-Z56 !s107 D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/BReg.vhd|
+Z55 !s108 1556292532.000000
+Z56 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/BReg.vhd|
+Z57 !s107 D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/BReg.vhd|
 !i113 1
 R14
 R15
@@ -328,32 +328,32 @@ VI[Z5If8?9h6=Xi]DkI6@G2
 !s100 g5j38U]=Co;UeF7AK1FOz2
 R9
 32
-R37
+R54
 !i10b 1
-R42
 R55
 R56
+R57
 !i113 1
 R14
 R15
 Eext_signo
-Z57 w1397310008
+Z58 w1397310008
 R4
 R5
 R6
-Z58 8D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/Ext_signo.vhd
-Z59 FD:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/Ext_signo.vhd
+Z59 8D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/Ext_signo.vhd
+Z60 FD:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/Ext_signo.vhd
 l0
 L32
 VXf93dK=jfGbHU]2Ef7mDW1
 !s100 =jQT7hQEW^Q9VGDz6>Dnd0
 R9
 32
-Z60 !s110 1555704741
+R54
 !i10b 1
-Z61 !s108 1555704741.000000
-Z62 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/Ext_signo.vhd|
-Z63 !s107 D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/Ext_signo.vhd|
+R55
+Z61 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/Ext_signo.vhd|
+Z62 !s107 D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/Ext_signo.vhd|
 !i113 1
 R14
 R15
@@ -367,34 +367,34 @@ Va5[d?zV7L`XBX<c7AmWfn0
 !s100 LK3IFGmMiXJPmL2zW;mXf2
 R9
 32
-R60
+R54
 !i10b 1
+R55
 R61
 R62
-R63
 !i113 1
 R14
 R15
 Ememoriaram_d
-Z64 w1397310026
+Z63 w1397310026
 R3
 R2
 R4
 R5
 R6
-Z65 8D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/memoriaRAM_ejemplo.vhd
-Z66 FD:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/memoriaRAM_ejemplo.vhd
+Z64 8D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/memoriaRAM_ejemplo.vhd
+Z65 FD:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/memoriaRAM_ejemplo.vhd
 l0
 L33
 VfFlDKazVPSkzX<390lJZJ0
 !s100 mMMNkR4IjQ>dUl6ZdTO3b1
 R9
 32
-R60
+R54
 !i10b 1
-R61
-Z67 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/memoriaRAM_ejemplo.vhd|
-Z68 !s107 D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/memoriaRAM_ejemplo.vhd|
+R55
+Z66 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/memoriaRAM_ejemplo.vhd|
+Z67 !s107 D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/memoriaRAM_ejemplo.vhd|
 !i113 1
 R14
 R15
@@ -410,34 +410,34 @@ VdH<>IaH:Sf:1WoA5e<zAj2
 !s100 `aSZ[@2W0fGQ]D0kZ]AZl0
 R9
 32
-R60
+R54
 !i10b 1
-R61
+R55
+R66
 R67
-R68
 !i113 1
 R14
 R15
 Ememoriaram_i
-Z69 w1553702555
+Z68 w1553702555
 R3
 R2
 R4
 R5
 R6
-Z70 8D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/memoriaRAM_I_ejemplo_nops.vhd
-Z71 FD:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/memoriaRAM_I_ejemplo_nops.vhd
+Z69 8D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/memoriaRAM_I_ejemplo_nops.vhd
+Z70 FD:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/memoriaRAM_I_ejemplo_nops.vhd
 l0
 L32
 VYbZkhW9WoEbhnN`5@J6=`0
 !s100 Q@4V61X_V]:iAW=8FaYo:2
 R9
 32
-Z72 !s110 1555704742
+Z71 !s110 1556292533
 !i10b 1
-R61
-Z73 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/memoriaRAM_I_ejemplo_nops.vhd|
-Z74 !s107 D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/memoriaRAM_I_ejemplo_nops.vhd|
+R55
+Z72 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/memoriaRAM_I_ejemplo_nops.vhd|
+Z73 !s107 D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/memoriaRAM_I_ejemplo_nops.vhd|
 !i113 1
 R14
 R15
@@ -453,71 +453,71 @@ VdIhbcR3U>5;iNlU`JbEGE0
 !s100 kRLb^dZ4CPmf[1?7F0HWi2
 R9
 32
-R72
+R71
 !i10b 1
-R61
+R55
+R72
 R73
-R74
 !i113 1
 R14
 R15
 Emips_segmentado
-Z75 w1556216807
+Z74 w1556324012
 R4
 R5
 R6
-Z76 8D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/MIPs_predictor_incompleto.vhd
-Z77 FD:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/MIPs_predictor_incompleto.vhd
+Z75 8D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/MIPs_predictor_incompleto.vhd
+Z76 FD:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/MIPs_predictor_incompleto.vhd
 l0
 L17
 Ve<S3UnMGALX==76So=gmA3
 !s100 DJcDbJgiN<BoEZ@019[2E2
 R9
 32
-Z78 !s110 1556216812
+Z77 !s110 1556324017
 !i10b 1
-Z79 !s108 1556216812.000000
-Z80 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/MIPs_predictor_incompleto.vhd|
-Z81 !s107 D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/MIPs_predictor_incompleto.vhd|
+Z78 !s108 1556324017.000000
+Z79 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/MIPs_predictor_incompleto.vhd|
+Z80 !s107 D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/MIPs_predictor_incompleto.vhd|
 !i113 1
 R14
 R15
 Abehavioral
 R4
 R5
-Z82 DEx4 work 15 mips_segmentado 0 22 e<S3UnMGALX==76So=gmA3
-l264
+Z81 DEx4 work 15 mips_segmentado 0 22 e<S3UnMGALX==76So=gmA3
+l265
 L23
-VienaX9HazOXkmbCKH0ML01
-!s100 cVAo3Wnb]lkYnzlJzT>^82
+VkCH==TX]N^QoZ>fnL64>k1
+!s100 H1^@X5Sa<=>Ko3@0Y9EFo2
 R9
 32
-R78
+R77
 !i10b 1
+R78
 R79
 R80
-R81
 !i113 1
 R14
 R15
 Emux2_1
-Z83 w1397310294
+Z82 w1397310294
 R4
 R5
 R6
-Z84 8D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/mux2_1.vhd
-Z85 FD:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/mux2_1.vhd
+Z83 8D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/mux2_1.vhd
+Z84 FD:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/mux2_1.vhd
 l0
 L32
 V3ffz>_Pd`0UGm<RQ39N2<1
 !s100 [VRg3F0=o?Z:]Y[CCZJje0
 R9
 32
-R72
+R71
 !i10b 1
-Z86 !s108 1555704742.000000
-Z87 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/mux2_1.vhd|
-Z88 !s107 D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/mux2_1.vhd|
+Z85 !s108 1556292533.000000
+Z86 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/mux2_1.vhd|
+Z87 !s107 D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/mux2_1.vhd|
 !i113 1
 R14
 R15
@@ -531,32 +531,32 @@ VmO@O?FljQV@CmH;ACBYgj1
 !s100 zIQT7B^e_I4Qli6JQET>o2
 R9
 32
-R72
+R71
 !i10b 1
+R85
 R86
 R87
-R88
 !i113 1
 R14
 R15
 Emux2_5bits
-Z89 w1397310028
+Z88 w1397310028
 R4
 R5
 R6
-Z90 8D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/mux2_6bits.vhd
-Z91 FD:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/mux2_6bits.vhd
+Z89 8D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/mux2_6bits.vhd
+Z90 FD:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/mux2_6bits.vhd
 l0
 L32
 VhCRR<1Cbl2c7k1]J0>8dM2
 !s100 GnzQIA<O?`7V;D;ZbXOiA0
 R9
 32
-R72
+R71
 !i10b 1
-R86
-Z92 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/mux2_6bits.vhd|
-Z93 !s107 D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/mux2_6bits.vhd|
+R85
+Z91 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/mux2_6bits.vhd|
+Z92 !s107 D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/mux2_6bits.vhd|
 !i113 1
 R14
 R15
@@ -570,30 +570,30 @@ V[I3_:5o?GGJmF][39YDQA1
 !s100 =@Dj[OG[:JJ:5PSjamb5A3
 R9
 32
-R72
+R71
 !i10b 1
-R86
+R85
+R91
 R92
-R93
 !i113 1
 R14
 R15
 Emux4_1
-Z94 w1457725414
+Z93 w1457725414
 R4
 R5
 R6
-Z95 8D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/mux4_1.vhd
-Z96 FD:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/mux4_1.vhd
+Z94 8D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/mux4_1.vhd
+Z95 FD:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/mux4_1.vhd
 l0
 L32
 V9@bHkReO;BnoSl;<HR[bi3
 !s100 BQIO3X7:4P^HWdcH31;Ah0
 R9
 32
-R48
+Z96 !s110 1556292534
 !i10b 1
-R49
+R48
 Z97 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/mux4_1.vhd|
 Z98 !s107 D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/mux4_1.vhd|
 !i113 1
@@ -609,9 +609,9 @@ VTi_f=KH9H=[PhThfFBkcI3
 !s100 @MbWAi35T37I;^o2@7>W91
 R9
 32
-R48
+R96
 !i10b 1
-R49
+R48
 R97
 R98
 !i113 1
@@ -630,9 +630,9 @@ V6d^O7`FCgJG1BW>[2WP>10
 !s100 eC]>Q3Z[89zBLkPeQ2Xj<1
 R9
 32
-R48
+R96
 !i10b 1
-R49
+R48
 Z102 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/mux4_1_32bits.vhd|
 Z103 !s107 D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/mux4_1_32bits.vhd|
 !i113 1
@@ -648,9 +648,9 @@ VPIWRB3OE3iGmK8J?U0zQ=0
 !s100 8bbIj9`VbVePPKl6mXQcJ1
 R9
 32
-R48
+R96
 !i10b 1
-R49
+R48
 R102
 R103
 !i113 1
@@ -669,9 +669,9 @@ Vcf]H1V:29^h=K6L<M069Z0
 !s100 <HMai90R3mC^aKcUA9KWa3
 R9
 32
-Z107 !s110 1555704744
+R47
 !i10b 1
-R49
+Z107 !s108 1556292535.000000
 Z108 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/reg32.vhd|
 Z109 !s107 D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/reg32.vhd|
 !i113 1
@@ -687,9 +687,9 @@ VJ[W1HBgTgP5n;DfYZgH?h1
 !s100 2oc5;CJQla>1DYNY;i5db3
 R9
 32
-R107
+R47
 !i10b 1
-R49
+R107
 R108
 R109
 !i113 1
@@ -709,11 +709,11 @@ V?RXCn9@FP9m8X1o_bn1`P3
 !s100 E5:`7ea_eNYOUE@_LK2MY1
 R9
 32
-R107
+R47
 !i10b 1
-Z113 !s108 1555704744.000000
-Z114 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/testbench_Mips.vhd|
-Z115 !s107 D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/testbench_Mips.vhd|
+R107
+Z113 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/testbench_Mips.vhd|
+Z114 !s107 D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/testbench_Mips.vhd|
 !i113 1
 R14
 R15
@@ -728,32 +728,32 @@ VcF7aHoN>fY_5Nnm_0UPLk2
 !s100 H`9Dmn2O>^WRDfKCAVlQB0
 R9
 32
-R107
+R47
 !i10b 1
+R107
 R113
 R114
-R115
 !i113 1
 R14
 R15
 Etwo_bits_shifter
-Z116 w1397310000
+Z115 w1397310000
 R4
 R5
 R6
-Z117 8D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/bits_shifter.vhd
-Z118 FD:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/bits_shifter.vhd
+Z116 8D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/bits_shifter.vhd
+Z117 FD:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/bits_shifter.vhd
 l0
 L32
 V>``KTYRlmPk@4izOeR>SC2
 !s100 deJGV>HE6>8?]PdW4eZi]0
 R9
 32
-R37
+R36
 !i10b 1
-R42
-Z119 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/bits_shifter.vhd|
-Z120 !s107 D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/bits_shifter.vhd|
+R37
+Z118 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/bits_shifter.vhd|
+Z119 !s107 D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/bits_shifter.vhd|
 !i113 1
 R14
 R15
@@ -767,32 +767,32 @@ Vbj_^QdRmenNNW7b;[Wll]1
 !s100 i;0b?lmD0hmf`Rg0aMFK72
 R9
 32
-R37
+R36
 !i10b 1
-R42
+R37
+R118
 R119
-R120
 !i113 1
 R14
 R15
 Eua
-Z121 w1553701608
+Z120 w1556292639
 R4
 R5
 R6
-Z122 8D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/UA_incompleta.vhd
-Z123 FD:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/UA_incompleta.vhd
+Z121 8D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/UA_incompleta.vhd
+Z122 FD:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/UA_incompleta.vhd
 l0
 L14
 VV_z4L`O58ZG;X[69LGL4d2
 !s100 =56gT7ZTNW1WhkV52E;]M3
 R9
 32
-R107
+Z123 !s110 1556323351
 !i10b 1
-R113
-Z124 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/UA_incompleta.vhd|
-Z125 !s107 D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/UA_incompleta.vhd|
+Z124 !s108 1556323351.000000
+Z125 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/UA_incompleta.vhd|
+Z126 !s107 D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/UA_incompleta.vhd|
 !i113 1
 R14
 R15
@@ -802,54 +802,54 @@ R5
 DEx4 work 2 ua 0 22 V_z4L`O58ZG;X[69LGL4d2
 l29
 L27
-VcY`I7gMm[RPWzH1hAa?LW3
-!s100 mk86?TJAf0if6>U>OzkBm2
+Vib@fz_PLzf:dLRI;3h=f<0
+!s100 KfR?T2BVoY[MbYl8]kW=U0
 R9
 32
-R107
+R123
 !i10b 1
-R113
 R124
 R125
+R126
 !i113 1
 R14
 R15
 Euc
-Z126 w1555699256
+Z127 w1556323408
 R4
 R5
 R6
-Z127 8D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/UC_Mips.vhd
-Z128 FD:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/UC_Mips.vhd
+Z128 8D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/UC_Mips.vhd
+Z129 FD:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/UC_Mips.vhd
 l0
 L32
-VOj4BhhM5n@`<Uo0Fk1C@O2
-!s100 NAJ>Z^A`z9_7Z8aI[>kQi1
+V37]T75KVb]j_EAgASYOUM2
+!s100 gS8Q`m0Rh^]:CClIN<WK=0
 R9
 32
-R10
+Z130 !s110 1556323415
 !i10b 1
-R20
-Z129 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/UC_Mips.vhd|
-Z130 !s107 D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/UC_Mips.vhd|
+Z131 !s108 1556323415.000000
+Z132 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/UC_Mips.vhd|
+Z133 !s107 D:/Universidad/AOC-II/proyecto1 - AOC II/Material P1/fuentes mips incompleto/UC_Mips.vhd|
 !i113 1
 R14
 R15
 Abehavioral
 R4
 R5
-DEx4 work 2 uc 0 22 Oj4BhhM5n@`<Uo0Fk1C@O2
-l52
-L50
-VL6`Xe`O7<:dACb2<8TCAa1
-!s100 YZ7C9Q8a6V^DjJkaFkzb20
+DEx4 work 2 uc 0 22 37]T75KVb]j_EAgASYOUM2
+l54
+L52
+Vd^Clo98[Iz37c5323;U^=0
+!s100 oPzQAQ?[oXR78R?nz44ai1
 R9
 32
-R10
-!i10b 1
-R20
-R129
 R130
+!i10b 1
+R131
+R132
+R133
 !i113 1
 R14
 R15
