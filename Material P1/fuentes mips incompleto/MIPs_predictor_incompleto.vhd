@@ -1,9 +1,9 @@
 ----------------------------------------------------------------------------------
--- Description: Mips segmentado tal y como lo hemos estudiado en clase. Sus características son:
+-- Description: Mips segmentado tal y como lo hemos estudiado en clase. Sus caracterï¿½sticas son:
 -- Saltos 1-retardados
--- instrucciones aritméticas, LW, SW y BEQ
+-- instrucciones aritmï¿½ticas, LW, SW y BEQ
 -- MI y MD de 128 palabras de 32 bits
--- Registro de salida de 32 bits mapeado en la dirección FFFFFFFF. Si haces un SW en esa dirección se escribe en este registro y no en la memoria
+-- Registro de salida de 32 bits mapeado en la direcciï¿½n FFFFFFFF. Si haces un SW en esa direcciï¿½n se escribe en este registro y no en la memoria
 -- Dependencies: 
 --
 -- Revision: 
@@ -29,19 +29,19 @@ component reg32 is
            Dout : out  STD_LOGIC_VECTOR (31 downto 0));
 end component;
 ---------------------------------------------------------------
--- Interfaz del componente que debéis diseñar
+-- Interfaz del componente que debï¿½is diseï¿½ar
 component branch_predictor is
  Port ( 	clk : in  STD_LOGIC;
 			reset : in  STD_LOGIC;
  			-- Puerto de lectura se accede con los 8 bits menos significativos de PC+4 sumado en IF
 			PC4 : in  STD_LOGIC_VECTOR (7 downto 0);  
-			branch_address_out : out  STD_LOGIC_VECTOR (31 downto 0); -- dirección de salto
-			prediction_out : out  STD_LOGIC; -- indica si hay que saltar a la dirección de salto (1) o no (0)
-         	-- Puerto de escritura se envía PC+4, la dirección de salto y la predicción, y se activa la señal update_prediction
+			branch_address_out : out  STD_LOGIC_VECTOR (31 downto 0); -- direcciï¿½n de salto
+			prediction_out : out  STD_LOGIC; -- indica si hay que saltar a la direcciï¿½n de salto (1) o no (0)
+         	-- Puerto de escritura se envï¿½a PC+4, la direcciï¿½n de salto y la predicciï¿½n, y se activa la seï¿½al update_prediction
 			PC4_ID:  in  STD_LOGIC_VECTOR (7 downto 0); -- Etiqueta: 8 bits menos significativos del PC+4 de la etapa ID
-			prediction_in : in  STD_LOGIC; -- predicción
-			branch_address_in : in  STD_LOGIC_VECTOR (31 downto 0); -- dirección de salto
-       	update:  in  STD_LOGIC); -- da la orden de actualizar la información del predictor
+			prediction_in : in  STD_LOGIC; -- predicciï¿½n
+			branch_address_in : in  STD_LOGIC_VECTOR (31 downto 0); -- direcciï¿½n de salto
+       	update:  in  STD_LOGIC); -- da la orden de actualizar la informaciï¿½n del predictor
 end component;
 --------------------------------------------------------------
 component adder32 is
@@ -85,15 +85,15 @@ component memoriaRAM_I_anti is port (
 end component;
 
 component Banco_ID is
- Port ( IR_in : in  STD_LOGIC_VECTOR (31 downto 0); -- instrucción leida en IF
+ Port ( IR_in : in  STD_LOGIC_VECTOR (31 downto 0); -- instrucciï¿½n leida en IF
         PC4_in:  in  STD_LOGIC_VECTOR (31 downto 0); -- PC+4 sumado en IF
-		-- señales de la predicción de salto (dirección y predicción)
+		-- seï¿½ales de la predicciï¿½n de salto (direcciï¿½n y predicciï¿½n)
         address_predicted : in  STD_LOGIC_VECTOR (31 downto 0);
         prediction: in  STD_LOGIC;
 		  clk : in  STD_LOGIC;
 		  reset : in  STD_LOGIC;
         load : in  STD_LOGIC;
-        IR_ID : out  STD_LOGIC_VECTOR (31 downto 0); -- instrucción en la etapa ID
+        IR_ID : out  STD_LOGIC_VECTOR (31 downto 0); -- instrucciï¿½n en la etapa ID
         PC4_ID:  out  STD_LOGIC_VECTOR (31 downto 0);-- PC+4 en la etapa ID
         address_predicted_ID : out  STD_LOGIC_VECTOR (31 downto 0);
         prediction_ID: out  STD_LOGIC); 
@@ -132,7 +132,6 @@ component UC is
            MemRead : out  STD_LOGIC;
            MemtoReg : out  STD_LOGIC; 
            RegWrite : out  STD_LOGIC;
-		   RegRead : out STD_LOGIC;
 		   BNE : out  STD_LOGIC
            );
 end component;
@@ -265,7 +264,7 @@ signal Mux_A_out, Mux_B_out: std_logic_vector(31 downto 0);
 begin
 pc: reg32 port map (	Din => PC_in, clk => clk, reset => reset, load => load_PC, Dout => PC_out);
 
-load_PC <= avanzar_ID; -- Si paramos en ID, hay que parar también en IF
+load_PC <= avanzar_ID; -- Si paramos en ID, hay que parar tambiï¿½n en IF
 
 four <= "00000000000000000000000000000100";
 cero <= "00000000000000000000000000000000";
@@ -282,12 +281,12 @@ b_predictor: branch_predictor port map ( 	clk => clk, reset => reset,
        										update => update_predictor);
 
 ------------------------------------
--- Prediccion de saltos: MUX para elegir la próxima instrucción
+-- Prediccion de saltos: MUX para elegir la prï¿½xima instrucciï¿½n
 -- A este Mux le llegan 4 opciones: 
 -- 	PC4: PC actual +4
--- 	@address_predicted: la dirección de salto que proporciona el predictor
---	PC4_ID: el PC +4 de la instrucción que está en ID
--- 	DirSalto_ID: la dirección de salto claculada en la etapa ID
+-- 	@address_predicted: la direcciï¿½n de salto que proporciona el predictor
+--	PC4_ID: el PC +4 de la instrucciï¿½n que estï¿½ en ID
+-- 	DirSalto_ID: la direcciï¿½n de salto claculada en la etapa ID
 --  Salta sii Branch y Z son 1
 
 PCSrc <= "11" when (predictor_error='1' and Saltar='1') else "10" when (predictor_error='1' and Saltar='0') else "01" when (prediction='1') else "00";
@@ -298,12 +297,12 @@ muxPC: mux4_1 port map (Din0 => PC4, DIn1 => address_predicted, Din2 => PC4_ID, 
 -----------------------------------
 Mem_I: memoriaRAM_I_anti PORT MAP (CLK => CLK, ADDR => PC_out, Din => cero, WE => '0', RE => '1', Dout => IR_in);
 --------------------------------------------------------------
--- Prediccion de saltos: Anulación de la instrucción. Si en ID se detecta un error la instrucción que se acaba de leer se anula. Para ello se sustituye su código por el de una nop
--- La siguiente línea es un mux descrito de forma funcional
+-- Prediccion de saltos: Anulaciï¿½n de la instrucciï¿½n. Si en ID se detecta un error la instrucciï¿½n que se acaba de leer se anula. Para ello se sustituye su cï¿½digo por el de una nop
+-- La siguiente lï¿½nea es un mux descrito de forma funcional
 IR_bancoID_in(31 downto 26) <= IR_in(31 downto 26) when (predictor_error='0') else "000000";
 IR_bancoID_in(25 downto 0) <= IR_in(25 downto 0);
 -----------------------------------------------------------------
--- hay que mandar la info de la predicción a la etapa ID para poder comprobar si ha sido acierto o fallo para ello añadimos dos registros al banco: dirección (address_predicted que es la dirección que hemos metido en la entrada del PC) y decisión (prediction_out)
+-- hay que mandar la info de la predicciï¿½n a la etapa ID para poder comprobar si ha sido acierto o fallo para ello aï¿½adimos dos registros al banco: direcciï¿½n (address_predicted que es la direcciï¿½n que hemos metido en la entrada del PC) y decisiï¿½n (prediction_out)
 Banco_IF_ID: Banco_ID port map (	IR_in => IR_bancoID_in, PC4_in => PC4, clk => clk, reset => reset, load => avanzar_ID, IR_ID => IR_ID, PC4_ID => PC4_ID,
 									address_predicted => PC_in, prediction => prediction, address_predicted_ID => address_predicted_ID, prediction_ID => prediction_ID );
 --
@@ -322,15 +321,15 @@ adder_dir: adder32 port map (Din0 => inm_ext_x4, Din1 => PC4_ID, Dout => DirSalt
 Z <= '1' when (busA=busB) else '0';
 
 ------------------------------------
--- Riesgos de datos: os damos las señales definidas, pero están todas a cero, debéis incluir el código identifica cada riesgo
+-- Riesgos de datos: os damos las seï¿½ales definidas, pero estï¿½n todas a cero, debï¿½is incluir el cï¿½digo identifica cada riesgo
 -- Codigo: 000000  000001  000010  000011  000100  000101  001000
 -- Oper:    nop     add      lw      sw     beq     bne	    la 
 -- Detectar lw/uso: 
 
 -- load_dato <= '1' when  -- op anterior (en EX) es lw o la     	   ->  MemtoReg_EX se supone que cumple esta funcion
 
--- necesita_dato <= -- la op en ID puede requerir el dato de un load   ->  al final he añadido la señal Reg_Read a la UC
-
+-- necesita_dato <= -- la op en ID puede requerir el dato de un load   ->  al final he aï¿½adido la seï¿½al Reg_Read a la UC
+RegRead <= '1' when ( IR_ID(31 downto 26)= "000001" or IR_ID(31 downto 26)= "000010" or IR_ID(31 downto 26)= "000011" or IR_ID(31 downto 26)= "000100" or IR_ID(31 downto 26)= "000101" or IR_ID(31 downto 26)= "001000") else '0';
 -- IR_ID(25 downto 21) es Rs en ID; IR_ID(20 downto 16) es Rt
 riesgo_rs_lw_uso <= '1' when (RegRead = '1' and IR_ID(25 downto 21) = RW_EX and MemtoReg_EX = '1') else '0';
 riesgo_rt_lw_uso <= '1' when (RegRead = '1' and IR_ID(20 downto 16) = RW_EX and MemtoReg_EX = '1') else '0';
@@ -345,9 +344,9 @@ riesgo_beq_rt_d1 <= '1' when (Branch = '1' and IR_ID(20 downto 16) = RW_EX and R
 riesgo_beq_rt_d2 <= '1' when (Branch = '1' and IR_ID(20 downto 16) = RW_EX and MemtoReg_EX = '1') else '0'; 
 
 riesgo_beq <= riesgo_beq_rs_d1 or riesgo_beq_rs_d2 or riesgo_beq_rt_d1 or riesgo_beq_rt_d2;
--- en función de los riesgos se para o se permite continuar a la instrucción en ID
+-- en funciï¿½n de los riesgos se para o se permite continuar a la instrucciï¿½n en ID
 avanzar_ID <= '0' when (riesgo_lw_uso = '1' or riesgo_beq = '1') else '1';
--- Envío de instrucción a EX. Adoptamos una solución sencilla, si hay que parar pasamos hacia adelante las señales de control de una nop
+-- Envï¿½o de instrucciï¿½n a EX. Adoptamos una soluciï¿½n sencilla, si hay que parar pasamos hacia adelante las seï¿½ales de control de una nop
 Op_code_ID <= IR_ID(31 downto 26) when avanzar_ID='1' else "000000";
 ------------------------------------------------------------
 
@@ -355,25 +354,25 @@ Op_code_ID <= IR_ID(31 downto 26) when avanzar_ID='1' else "000000";
 UC_seg: UC port map (IR_op_code => Op_code_ID, Branch => Branch, RegDst => RegDst_ID,  ALUSrc => ALUSrc_ID, MemWrite => MemWrite_ID,  
 							MemRead => MemRead_ID, MemtoReg => MemtoReg_ID, RegWrite => RegWrite_ID, BNE => BNE, RegRead => RegRead);
 ------------------------------------
--- Prediccion de saltos: Comprobar si había que saltar
--- Ahora mismo sólo esta implementada la instrucción de salto BEQ. Si es una instrucción de salto y se activa la señal Z se debe saltar
--- Si se añaden otras opciones (como BNE) hay que actualizar esto
+-- Prediccion de saltos: Comprobar si habï¿½a que saltar
+-- Ahora mismo sï¿½lo esta implementada la instrucciï¿½n de salto BEQ. Si es una instrucciï¿½n de salto y se activa la seï¿½al Z se debe saltar
+-- Si se aï¿½aden otras opciones (como BNE) hay que actualizar esto
 Saltar <= (Branch AND Z AND NOT BNE) OR (Branch AND NOT Z AND BNE);
 ------------------------------------
--- Prediccion de saltos: Comprobación de la predicción realizada:
--- las señales están a cero. Tenéis que diseñar vosotros la lógica necesaria para cada caso
+-- Prediccion de saltos: Comprobaciï¿½n de la predicciï¿½n realizada:
+-- las seï¿½ales estï¿½n a cero. Tenï¿½is que diseï¿½ar vosotros la lï¿½gica necesaria para cada caso
 address_error <= '0' when (prediction_ID='0') or (address_predicted_ID=DirSalto_ID) else '1';
 decission_error <= '0' when (Saltar=prediction_ID) else '1';
--- Ha habido un error si el predictor tomó la decisión contraria (decission error) o si se decidió saltar pero se saltó a una dirección incorrecta
+-- Ha habido un error si el predictor tomï¿½ la decisiï¿½n contraria (decission error) o si se decidiï¿½ saltar pero se saltï¿½ a una direcciï¿½n incorrecta
 predictor_error <= (decission_error or address_error) and Branch;
--- Actualización del predictor: si la predicción fue errónea damos la orden de que se carguen los datos correctos
+-- Actualizaciï¿½n del predictor: si la predicciï¿½n fue errï¿½nea damos la orden de que se carguen los datos correctos
 update_predictor <= predictor_error;
 prediction_in <= Saltar;
 branch_address_in <= DirSalto_ID;
 -------------------------------------------------------------------------				
--- si la operación es aritmética (es decir: IR_ID(31 downto 26)= "000001") miro el campo funct
--- como sólo hay 4 operaciones en la alu, basta con los bits menos significativos del campo func de la instrucción	
--- si no es aritmética le damos el valor de la suma (000)
+-- si la operaciï¿½n es aritmï¿½tica (es decir: IR_ID(31 downto 26)= "000001") miro el campo funct
+-- como sï¿½lo hay 4 operaciones en la alu, basta con los bits menos significativos del campo func de la instrucciï¿½n	
+-- si no es aritmï¿½tica le damos el valor de la suma (000)
 ALUctrl_ID <= IR_ID(2 downto 0) when IR_ID(31 downto 26)= "000001" else "000"; 
 
 Banco_ID_EX: Banco_EX PORT MAP ( clk => clk, reset => reset, load => '1', busA => busA, busB => busB, busA_EX => busA_EX, busB_EX => busB_EX,
@@ -381,7 +380,7 @@ Banco_ID_EX: Banco_EX PORT MAP ( clk => clk, reset => reset, load => '1', busA =
 				MemtoReg_ID => MemtoReg_ID, RegWrite_ID => RegWrite_ID, RegDst_EX => RegDst_EX, ALUSrc_EX => ALUSrc_EX,
 				MemWrite_EX => MemWrite_EX, MemRead_EX => MemRead_EX, MemtoReg_EX => MemtoReg_EX, RegWrite_EX => RegWrite_EX,
 				ALUctrl_ID => ALUctrl_ID, ALUctrl_EX => ALUctrl_EX, inm_ext => inm_ext, inm_ext_EX=> inm_ext_EX,
-				-- Nuevo (para la anticipación)
+				-- Nuevo (para la anticipaciï¿½n)
 				Reg_Rs_ID => IR_ID(25 downto 21), Reg_Rs_EX => Reg_Rs_EX,
 				Reg_Rt_ID => IR_ID(20 downto 16), Reg_Rd_ID => IR_ID(15 downto 11), Reg_Rt_EX => Reg_Rt_EX, Reg_Rd_EX => Reg_Rd_EX);			
 
@@ -390,7 +389,7 @@ Banco_ID_EX: Banco_EX PORT MAP ( clk => clk, reset => reset, load => '1', busA =
 --
 
 ---------------------------------------------------------------------------------
--- Unidad de anticipacion. Ahora mismo selecciona siempre la entrada 0. Debéis editarla y escribir el código para que selecciones el caso adecuado
+-- Unidad de anticipacion. Ahora mismo selecciona siempre la entrada 0. Debï¿½is editarla y escribir el cï¿½digo para que selecciones el caso adecuado
 
 Unidad_Ant: UA port map (	Reg_Rs_EX => Reg_Rs_EX, Reg_Rt_EX => Reg_Rt_EX, RegWrite_MEM => RegWrite_MEM, RW_MEM => RW_MEM,
 							RegWrite_WB => RegWrite_WB, RW_WB => RW_WB, MUX_ctrl_A => MUX_ctrl_A, MUX_ctrl_B => MUX_ctrl_B);
