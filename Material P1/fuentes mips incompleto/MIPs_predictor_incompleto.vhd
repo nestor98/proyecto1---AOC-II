@@ -75,7 +75,7 @@ component memoriaRAM_D is port (
 		Dout : out std_logic_vector (31 downto 0));
 end component;
 
-component memoriaRAM_I_anti is port (
+component memoriaRAM_I_sinNops is port (
 		CLK : in std_logic;
 		ADDR : in std_logic_vector (31 downto 0); --Dir 
         Din : in std_logic_vector (31 downto 0);--entrada de datos para el puerto de escritura
@@ -295,7 +295,7 @@ PCSrc <= "11" when (predictor_error='1' and Saltar='1') else "10" when (predicto
 
 muxPC: mux4_1 port map (Din0 => PC4, DIn1 => address_predicted, Din2 => PC4_ID, DIn3 => DirSalto_ID, ctrl => PCSrc, Dout => PC_in);
 -----------------------------------
-Mem_I: memoriaRAM_I_anti PORT MAP (CLK => CLK, ADDR => PC_out, Din => cero, WE => '0', RE => '1', Dout => IR_in);
+Mem_I: memoriaRAM_I_sinNops PORT MAP (CLK => CLK, ADDR => PC_out, Din => cero, WE => '0', RE => '1', Dout => IR_in);
 --------------------------------------------------------------
 -- Prediccion de saltos: Anulaci�n de la instrucci�n. Si en ID se detecta un error la instrucci�n que se acaba de leer se anula. Para ello se sustituye su c�digo por el de una nop
 -- La siguiente l�nea es un mux descrito de forma funcional
