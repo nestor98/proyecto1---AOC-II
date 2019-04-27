@@ -75,7 +75,7 @@ component memoriaRAM_D is port (
 		Dout : out std_logic_vector (31 downto 0));
 end component;
 
-component memoriaRAM_I is port (
+component memoriaRAM_I_saltos is port (
 		CLK : in std_logic;
 		ADDR : in std_logic_vector (31 downto 0); --Dir 
         Din : in std_logic_vector (31 downto 0);--entrada de datos para el puerto de escritura
@@ -255,7 +255,7 @@ signal MemtoReg_ID, MemtoReg_EX, MemtoReg_MEM, MemtoReg_WB, MemWrite_ID, MemWrit
 signal PC_in, PC_out, four, cero, PC4, DirSalto_ID, IR_in, IR_ID, PC4_ID, inm_ext_EX, Mux_out, IR_bancoID_in : std_logic_vector(31 downto 0);
 signal BusW, BusA, BusB, BusA_EX, BusB_EX, BusB_MEM, inm_ext, inm_ext_x4, ALU_out_EX, ALU_out_MEM, ALU_out_WB, Mem_out, MDR, address_predicted, address_predicted_ID, branch_address_in : std_logic_vector(31 downto 0);
 signal prediction, prediction_in, update_predictor, prediction_ID, predictor_error, address_error, decission_error, saltar : std_logic;
-signal riesgo_beq, riesgo_beq_rt_d2, riesgo_beq_rt_d1, riesgo_beq_rs_d2, riesgo_beq_rs_d1, riesgo_lw_uso, riesgo_rt_lw_uso, riesgo_rs_lw_uso, necesita_dato, load_dato, avanzar_ID: std_logic;
+signal riesgo_beq, riesgo_beq_rt_d2, riesgo_beq_rt_d1, riesgo_beq_rs_d2, riesgo_beq_rs_d1, riesgo_lw_uso, riesgo_rt_lw_uso, riesgo_rs_lw_uso, avanzar_ID: std_logic;
 signal RW_EX, RW_MEM, RW_WB, Reg_Rd_EX, Reg_Rt_EX, Reg_Rs_EX: std_logic_vector(4 downto 0);
 signal ALUctrl_ID, ALUctrl_EX : std_logic_vector(2 downto 0);
 signal Op_code_ID: std_logic_vector(5 downto 0);
@@ -296,7 +296,7 @@ PCSrc <= "11" when (predictor_error='1' and Saltar='1') else "10" when (predicto
 
 muxPC: mux4_1 port map (Din0 => PC4, DIn1 => address_predicted, Din2 => PC4_ID, DIn3 => DirSalto_ID, ctrl => PCSrc, Dout => PC_in);
 -----------------------------------
-Mem_I: memoriaRAM_I PORT MAP (CLK => CLK, ADDR => PC_out, Din => cero, WE => '0', RE => '1', Dout => IR_in);
+Mem_I: memoriaRAM_I_saltos PORT MAP (CLK => CLK, ADDR => PC_out, Din => cero, WE => '0', RE => '1', Dout => IR_in);
 --------------------------------------------------------------
 -- Prediccion de saltos: Anulación de la instrucción. Si en ID se detecta un error la instrucción que se acaba de leer se anula. Para ello se sustituye su código por el de una nop
 -- La siguiente línea es un mux descrito de forma funcional

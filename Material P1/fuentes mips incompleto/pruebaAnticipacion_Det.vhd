@@ -29,16 +29,16 @@ use ieee.std_logic_unsigned.all;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity memoriaRAM_I_saltos is port (
+entity memoriaRAM_I_anti is port (
 		  CLK : in std_logic;
 		  ADDR : in std_logic_vector (31 downto 0); --Dir 
         Din : in std_logic_vector (31 downto 0);--entrada de datos para el puerto de escritura
         WE : in std_logic;		-- write enable	
 		  RE : in std_logic;		-- read enable		  
 		  Dout : out std_logic_vector (31 downto 0));
-end memoriaRAM_I_saltos;
+end memoriaRAM_I_anti;
  
-architecture Behavioral of memoriaRAM_I_saltos is
+architecture Behavioral of memoriaRAM_I_anti is
 type RamType is array(0 to 127) of std_logic_vector(31 downto 0);
 signal RAM : RamType := (  			X"08010000", X"09020004", X"09230008", X"0945000C", X"00000000", X"10230002", X"08040010", X"10000001", -- posiciones 0,1,2,3,4,5,6,7
 									X"20040010", X"00000000", X"00000000", X"04C43000", X"04250800", X"00000000", X"00000000", X"1422FFF5", --posicones 8,9,...
