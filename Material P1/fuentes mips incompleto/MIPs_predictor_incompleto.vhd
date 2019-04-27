@@ -75,7 +75,7 @@ component memoriaRAM_D is port (
 		Dout : out std_logic_vector (31 downto 0));
 end component;
 
-component memoriaRAM_I_saltos is port (
+component memoriaRAM_I_anti is port (
 		CLK : in std_logic;
 		ADDR : in std_logic_vector (31 downto 0); --Dir 
         Din : in std_logic_vector (31 downto 0);--entrada de datos para el puerto de escritura
@@ -296,7 +296,7 @@ PCSrc <= "11" when (predictor_error='1' and Saltar='1') else "10" when (predicto
 
 muxPC: mux4_1 port map (Din0 => PC4, DIn1 => address_predicted, Din2 => PC4_ID, DIn3 => DirSalto_ID, ctrl => PCSrc, Dout => PC_in);
 -----------------------------------
-Mem_I: memoriaRAM_I_saltos PORT MAP (CLK => CLK, ADDR => PC_out, Din => cero, WE => '0', RE => '1', Dout => IR_in);
+Mem_I: memoriaRAM_I_anti PORT MAP (CLK => CLK, ADDR => PC_out, Din => cero, WE => '0', RE => '1', Dout => IR_in);
 --------------------------------------------------------------
 -- Prediccion de saltos: Anulación de la instrucción. Si en ID se detecta un error la instrucción que se acaba de leer se anula. Para ello se sustituye su código por el de una nop
 -- La siguiente línea es un mux descrito de forma funcional
@@ -353,7 +353,7 @@ Op_code_ID <= IR_ID(31 downto 26) when avanzar_ID='1' else "000000";
 
 
 UC_seg: UC port map (IR_op_code => Op_code_ID, Branch => Branch, RegDst => RegDst_ID,  ALUSrc => ALUSrc_ID, MemWrite => MemWrite_ID,  
-							MemRead => MemRead_ID, MemtoReg => MemtoReg_ID, RegWrite => RegWrite_ID, BNE => BNE);
+							MemRead => MemRead_ID, MemtoReg => MemtoReg_ID, RegWrite => RegWrite_ID, BNE => BNE, RegRead => RegRead);
 ------------------------------------
 -- Prediccion de saltos: Comprobar si había que saltar
 -- Ahora mismo sólo esta implementada la instrucción de salto BEQ. Si es una instrucción de salto y se activa la señal Z se debe saltar
