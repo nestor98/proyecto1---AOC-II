@@ -339,10 +339,10 @@ riesgo_lw_uso <= riesgo_rs_lw_uso or riesgo_rt_lw_uso;
 -- Detectar riesgos en los beq: 
 -- rs: distancia 1 (la ins anterior tiene el dato en la etapa E)
 -- supondre que solo las instrucciones Branch tienen 1 en el 3er bit de mas peso de su codigo de op
-riesgo_beq_rs_d1 <= '1' when (IR_ID(28) = '1' and IR_ID(25 downto 21) = RW_EX and RegWrite_EX = '1') or (IR_ID(28) = '1' and IR_ID(25 downto 21) = RW_MEM and MemtoReg_MEM = '1') else '0'; 
-riesgo_beq_rs_d2 <= '1' when (IR_ID(28) = '1' and IR_ID(25 downto 21) = RW_EX and MemtoReg_EX = '1') else '0'; 
-riesgo_beq_rt_d1 <= '1' when (IR_ID(28) = '1' and IR_ID(20 downto 16) = RW_EX and RegWrite_EX = '1') or (IR_ID(28) = '1' and IR_ID(25 downto 21) = RW_MEM and MemtoReg_MEM = '1') else '0'; 
-riesgo_beq_rt_d2 <= '1' when (IR_ID(28) = '1' and IR_ID(20 downto 16) = RW_EX and MemtoReg_EX = '1') else '0'; 
+riesgo_beq_rs_d1 <= '1' when (Branch = '1' and IR_ID(25 downto 21) = RW_EX and RegWrite_EX = '1') else '0';
+riesgo_beq_rs_d2 <= '1' when (Branch = '1' and IR_ID(25 downto 21) = RW_MEM and RegWrite_MEM = '1') else '0';  
+riesgo_beq_rt_d1 <= '1' when (Branch = '1' and IR_ID(20 downto 16) = RW_EX and RegWrite_EX = '1') else '0'; 
+riesgo_beq_rt_d2 <= '1' when (Branch = '1' and IR_ID(20 downto 16) = RW_EX and RegWrite_MEM = '1') else '0'; 
 
 riesgo_beq <= riesgo_beq_rs_d1 or riesgo_beq_rs_d2 or riesgo_beq_rt_d1 or riesgo_beq_rt_d2;
 -- en funci�n de los riesgos se para o se permite continuar a la instrucci�n en ID
@@ -370,7 +370,7 @@ predictor_error <= (decission_error or address_error) and Branch;
 update_predictor <= predictor_error;
 prediction_in <= Saltar;
 branch_address_in <= DirSalto_ID;
--------------------------------------------------------------------------				
+-------------------------------------------------------------------------
 -- si la operaci�n es aritm�tica (es decir: IR_ID(31 downto 26)= "000001") miro el campo funct
 -- como s�lo hay 4 operaciones en la alu, basta con los bits menos significativos del campo func de la instrucci�n	
 -- si no es aritm�tica le damos el valor de la suma (000)
@@ -383,7 +383,7 @@ Banco_ID_EX: Banco_EX PORT MAP ( clk => clk, reset => reset, load => '1', busA =
 				ALUctrl_ID => ALUctrl_ID, ALUctrl_EX => ALUctrl_EX, inm_ext => inm_ext, inm_ext_EX=> inm_ext_EX,
 				-- Nuevo (para la anticipaci�n)
 				Reg_Rs_ID => IR_ID(25 downto 21), Reg_Rs_EX => Reg_Rs_EX,
-				Reg_Rt_ID => IR_ID(20 downto 16), Reg_Rd_ID => IR_ID(15 downto 11), Reg_Rt_EX => Reg_Rt_EX, Reg_Rd_EX => Reg_Rd_EX);			
+				Reg_Rt_ID => IR_ID(20 downto 16), Reg_Rd_ID => IR_ID(15 downto 11), Reg_Rt_EX => Reg_Rt_EX, Reg_Rd_EX => Reg_Rd_EX);		
 
 --
 ------------------------------------------Etapa EX-------------------------------------------------------------------
