@@ -4,3 +4,11 @@
 *.mti
 
 vsim\.wlf
+
+work/_info
+
+*.qdb
+
+*.qpg
+
+*.qtl
