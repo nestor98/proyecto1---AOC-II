@@ -1,0 +1,41 @@
+formato aritméticas: 
+op	rs	rt	rd	shamt	funct
+000001	00001	00010  	00011  	00000	000000  ADD R3, R1, R2
+
+formato lw, sw, beq:
+op	rs	rt		inm
+000010 	00000	00001 	0000000000000000 		LW  R1, 0(R0)  dir 0
+
+codigo inicial en la ram de instrucciones:
+
+El valor inicial de los registros es 0 (partimos de un reset) 
+El código está pensado para funcionar en un procesador capaz de gestionar los riesgos
+
+Suponemos que la posición 4 de memoria de datos tiene un 8
+
+
+000010  00000   00000   0000000000000000		LW R0, 0(R0)
+000000  00000   00000   0000000000000000		nop
+000010 	00010	00010 	0000000000000000 		LW R2, 0(R2); R3= MD(x04)=8 #corto a distancia 1 con el LA
+001000 	00001	00010 	0000000000000100 		LA R2, 4(R1); R2=4, R1=0
+000001	00011	00010  	0010000000000000		ADD R4, R2, R3;   R4=16 # parada + cortos a distancia 2
+000011 	00100	00100 	0000000000000100 		SW R4, 4(R4);  MD(x14)=16 #cortos a distancia 1
+000100	00010	00100	1111111111111111		BEQ R2, R4, loop;  No se salta la primera vez: R2=4, R4=16. 
+								; Sí se salta la segunda (predictor falla): R2=4, R3=4 , y en las siguientes el predictor acierta
+001000 	00001	00100 	0000000000000100 		LA R4, 4(R1); R4=4, R1=0
+000101	00000	00100	1111111111111101		BNE R0, R4, loop; Sí se salta: R4=4, R0=0; Se vuelve al BEQ anterior 
+
+
+
+EN hexadecimal:
+
+000010  00000   00000   0000000000000000	08000000	LW R0, 0(R0)
+000000  00000   00000   0000000000000000	00000000	nop
+0000 1000 0100 0010	0000 0000 0000 0000 	08420000	LW R2, 0(R2); R3= MD(x04)=8 #corto a distancia 2 con add ?? 
+0010 0000 0010 0010	0000 0000 0000 0100 	20220004	LA R2, 4(R1); R2=4, R1=0 # corto a d1 con add ??
+0000 0100 0110 0010	0010 0000 0000 0000		04622000 	ADD R4, R2, R3;   R4=16 # parada? + cortos a distancia 2
+0000 1100 1000 0100	0000 0000 0000 0100 	0C840004	SW R4, 4(R4);  MD(x10)=16 #cortos a distancia 1
+0001 0000 0100 0100 1111 1111 1111 1111		1044ffff	BEQ R2, R4, loop;  No se salta la primera vez, se detiene un ciclo: R2=4, R4=16. 
+									; Sí se salta la segunda (ya no se detiene) (predictor falla): R2=4, R3=4 , y en las siguientes el predictor acierta
+0010 0000 0010 0100	0000 0000 0000 0100 	20240004	LA R4, 4(R1); R4=4, R1=0
+0001 0100 0000 0100	1111 1111 1111 1101		1404fffD	BNE R0, R4, loop; Dos ciclos de detencion. Sí se salta: R4=4, R0=0; Se vuelve al BEQ anterior 
