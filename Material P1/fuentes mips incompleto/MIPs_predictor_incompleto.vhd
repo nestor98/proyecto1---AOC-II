@@ -337,9 +337,6 @@ riesgo_rt_lw_uso <= '1' when (RegRead = '1' and IR_ID(20 downto 16) = RW_EX and 
 riesgo_lw_uso <= riesgo_rs_lw_uso or riesgo_rt_lw_uso;
 
 -- Detectar riesgos en los beq: 
--- rs: distancia 1 (la ins anterior tiene el dato en la etapa E)
--- supondre que solo las instrucciones Branch tienen 1 en el 3er bit de mas peso de su codigo de op
-
 Salto <= '1' when ( IR_ID(31 downto 26)= "000100" or IR_ID(31 downto 26)= "000101" ) else '0';
 riesgo_beq_rs_d1 <= '1' when (Salto='1' and IR_ID(25 downto 21) = RW_EX and RegWrite_EX = '1') else '0';
 riesgo_beq_rs_d2 <= '1' when (Salto='1' and IR_ID(25 downto 21) = RW_MEM and RegWrite_MEM = '1') else '0';  
@@ -358,7 +355,6 @@ avanzar_ID <= '0' when (riesgo_lw_uso = '1' or riesgo_beq = '1') else '1';
 -- Env�o de instrucci�n a EX. Adoptamos una soluci�n sencilla, si hay que parar pasamos hacia adelante las se�ales de control de una nop
 Op_code_ID <= IR_ID(31 downto 26) when avanzar_ID='1' else "000000";
 ------------------------------------------------------------
-
 
 UC_seg: UC port map (IR_op_code => Op_code_ID, Branch => Branch, RegDst => RegDst_ID,  ALUSrc => ALUSrc_ID, MemWrite => MemWrite_ID,  
 							MemRead => MemRead_ID, MemtoReg => MemtoReg_ID, RegWrite => RegWrite_ID, BNE => BNE);
@@ -398,8 +394,7 @@ Banco_ID_EX: Banco_EX PORT MAP ( clk => clk, reset => reset, load => '1', busA =
 --
 
 ---------------------------------------------------------------------------------
--- Unidad de anticipacion. Ahora mismo selecciona siempre la entrada 0. Deb�is editarla y escribir el c�digo para que selecciones el caso adecuado
-
+-- Unidad de anticipacion. 
 Unidad_Ant: UA port map (	Reg_Rs_EX => Reg_Rs_EX, Reg_Rt_EX => Reg_Rt_EX, RegWrite_MEM => RegWrite_MEM, RW_MEM => RW_MEM,
 							RegWrite_WB => RegWrite_WB, RW_WB => RW_WB, MUX_ctrl_A => MUX_ctrl_A, MUX_ctrl_B => MUX_ctrl_B);
 							
